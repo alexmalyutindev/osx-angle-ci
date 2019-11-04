@@ -1,6 +1,6 @@
 git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
-export PATH=$PATH:$pwd/depot_tools
-curl https://github.com/aktau/github-release/releases/download/v0.7.2/darwin-amd64-github-release.tar.bz2 -O github-release.tar.bz2
+export PATH=$PATH:$PWD/depot_tools
+curl -L https://github.com/aktau/github-release/releases/download/v0.7.2/darwin-amd64-github-release.tar.bz2 --output github-release.tar.bz2
 tar -xf github-release.tar.bz2
 git clone https://chromium.googlesource.com/angle/angle
 cd angle
