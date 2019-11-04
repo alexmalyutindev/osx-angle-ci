@@ -11,4 +11,5 @@ git checkout master
 gn gen out/Release --args='target_cpu="x86" is_debug=false'
 autoninja -C out/Release
 cd ..
+mkdir ./artifacts
 cp angle/out/Release/*.dylib ./artifacts/
