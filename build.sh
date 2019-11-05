@@ -8,6 +8,7 @@ cd angle
 python scripts/bootstrap.py
 gclient sync
 git checkout master
+cp ../BUILD.gn build/config/mac/BUILD.gn
 gn gen out/Release --args='target_cpu="x86" is_debug=false'
 autoninja -C out/Release
 cd ..
