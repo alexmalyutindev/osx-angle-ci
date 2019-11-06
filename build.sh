@@ -13,3 +13,4 @@ autoninja -C out/Release
 cd ..
 mkdir ./artifacts
 cp angle/out/Release/*.dylib ./artifacts/
+cp angle/out/Release/*.a ./artifacts/
