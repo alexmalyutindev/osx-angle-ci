@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     macos:
-      xcode: "9.4.1"
+      xcode: "9.0.1"
     working_directory: /Users/distiller/project
     steps:
       - checkout
@@ -13,6 +13,4 @@ jobs:
           path: ./artifacts
       - run:
           name: "Publish Release on GitHub"
-          command: |
-            VERSION=${CIRCLE_BUILD_NUM}
-            ./bin/darwin/amd64/github-release -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${VERSION} ./artifacts
+          command: command: curl -L https://github.com/tcnksm/ghr/releases/download/v0.13.0/ghr_v0.13.0_darwin_amd64.zip --output ghr.zip && unzip ghr.zip && ./ghr*/ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete $((${CIRCLE_BUILD_NUM} / 4)).AppImage ./artifacts

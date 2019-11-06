@@ -1,14 +1,13 @@
 git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
 export PATH=$PATH:$PWD/depot_tools
 export FORCE_MAC_SDK_MIN=10.10
-curl -L https://github.com/aktau/github-release/releases/download/v0.7.2/darwin-amd64-github-release.tar.bz2 --output github-release.tar.bz2
-tar -xf github-release.tar.bz2
-git clone https://chromium.googlesource.com/angle/angle
+git clone -n https://chromium.googlesource.com/angle/angle
+# Try older commit Could be nearly the last working Version for 32 bit MacOs <= 10.14
+git checkout ba65c156cf76e73ddbb405a26f299cf079af0f92
 cd angle
 python scripts/bootstrap.py
 gclient sync
 git checkout master
-cp ../BUILD.gn build/config/mac/BUILD.gn
 gn gen out/Release --args='target_cpu="x86" is_debug=false'
 autoninja -C out/Release
 cd ..
