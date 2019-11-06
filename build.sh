@@ -7,7 +7,7 @@ cd angle
 git checkout ba65c156cf76e73ddbb405a26f299cf079af0f92
 python scripts/bootstrap.py
 gclient sync
-git checkout master
+git checkout ba65c156cf76e73ddbb405a26f299cf079af0f92
 gn gen out/Release --args='target_cpu="x86" is_debug=false'
 autoninja -C out/Release
 cd ..
