@@ -13,4 +13,4 @@ jobs:
           path: ./artifacts
       - run:
           name: "Publish Release on GitHub"
-          command: command: curl -L https://github.com/tcnksm/ghr/releases/download/v0.13.0/ghr_v0.13.0_darwin_amd64.zip --output ghr.zip && unzip ghr.zip && ./ghr*/ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete $((${CIRCLE_BUILD_NUM} / 4)).AppImage ./artifacts
+          command: curl -L https://github.com/tcnksm/ghr/releases/download/v0.13.0/ghr_v0.13.0_darwin_amd64.zip --output ghr.zip && unzip ghr.zip && ./ghr*/ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete $((${CIRCLE_BUILD_NUM} / 4)).AppImage ./artifacts
