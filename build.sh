@@ -1,10 +1,9 @@
 git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
 export PATH=$PATH:$PWD/depot_tools
-git clone -n https://chromium.googlesource.com/angle/angle
+git clone https://chromium.googlesource.com/angle/angle
 cd angle
 python scripts/bootstrap.py
 gclient sync
-git checkout master
 gn gen out/Release --args='target_cpu="x86" is_debug=false mac_sdk_min="10.10" angle_enable_metal=false'
 autoninja -C out/Release
 cd ..
