@@ -1,6 +1,6 @@
 git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
 export PATH=$PATH:$PWD/depot_tools
-git clone https://chromium.googlesource.com/angle/angle
+git clone https://github.com/minecraft-linux/angle.git
 cd angle
 python scripts/bootstrap.py
 gclient sync
@@ -9,4 +9,3 @@ autoninja -C out/Release libEGL libGLESv2
 cd ..
 mkdir ./artifacts
 cp angle/out/Release/*.dylib ./artifacts/ > /dev/null || :
-cp angle/out/Release/*.a ./artifacts/ > /dev/null || :
