@@ -1,0 +1,29 @@
+name: Build Angle OSX Arm64
+
+on:
+  release:
+    types: [ "published" ]
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  # Build for OSX
+  build-osx-arm64:
+    runs-on: macos-latest
+    
+    # Run
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build Angle OSX Arm64
+        run: ./build.sh
+      
+      # Upload Angle
+      - name: Upload Angle
+        uses: actions/upload-artifact@v4
+        with:
+          name: osx-arm64
+          path: artifacts
+          if-no-files-found: error
