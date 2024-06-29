@@ -4,9 +4,9 @@ on:
   release:
     types: [ "published" ]
   push:
-    branches: [ "main" ]
+    branches: [ "master" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "master" ]
   workflow_dispatch:
 
 jobs:
@@ -18,12 +18,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Build Angle OSX Arm64
-        run: ./build.sh
+        run: |
+          brew install --cask google-chrome
+          brew list google-chrome
+          mkdir angle
+          cp "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Libraries/libGLESv2.dylib" ./angle/
+          cp "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Libraries/libEGL.dylib" ./angle/
       
       # Upload Angle
       - name: Upload Angle
         uses: actions/upload-artifact@v4
         with:
           name: osx-arm64
-          path: artifacts
+          path: angle
           if-no-files-found: error
